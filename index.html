@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="DOLA: Latent Action Representation Learning from Delta Observations" />
+  <meta property="og:description"
+    content="DOLA learns structured latent actions from actionless video with only 5% ground-truth labels." />
+  <title>DOLA: Latent Action Representation Learning from Delta Observations</title>
+
+  <!-- Lato font — matches play-to-policy exactly -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Bootstrap 5 (carousel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <div class="container">
+
+      <!-- ══════════ HERO ══════════ -->
+      <div class="row mt-5">
+        <div class="col-12 center">
+          <h1>
+            <span class="dola-name">DOLA</span>: Latent Action Representation Learning<br>
+            from Delta Observations
+          </h1>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center gap-4">
+          <a class="amber" href="#">
+            <h3>Paper</h3>
+          </a>
+          <a class="amber" href="#">
+            <h3>Code</h3>
+          </a>
+          <a class="amber" href="#">
+            <h3>arXiv</h3>
+          </a>
+        </div>
+      </div>
+
+      <!-- Venue -->
+      <div class="row mt-2">
+        <div class="col-12 center">
+          <h4 class="venue">NeurIPS 2026 &nbsp;·&nbsp; Submission</h4>
+        </div>
+      </div>
+
+      <!-- Teaser (animated Keynote, exported to HTML5) -->
+      <div class="d-flex justify-content-center mt-4">
+        <div class="teaser-keynote">
+          <iframe src="./static/dola_teaser_html/index.html"
+                  title="DOLA teaser"
+                  allow="autoplay"
+                  allowfullscreen
+                  loading="eager"
+                  frameborder="0"></iframe>
+        </div>
+      </div>
+
+      <div class="line mt-4"></div>
+
+      <!-- ══════════ ABSTRACT ══════════ -->
+      <div class="row mt-3">
+        <div class="col-12">
+          <h2 class="center mb-3">Abstract</h2>
+          <p>
+            Latent action models learn action representations from action-free video, scaling visuomotor
+            learning beyond the limited labeled demonstrations available in robotics. These models
+            typically train a latent inverse dynamics model jointly with a forward dynamics model on
+            paired observations, hoping the latent captures the underlying action through bottlenecked
+            reconstruction. However, since actions cause state changes, an action representation should
+            reflect the change in state it produces. Building on this inductive prior, we present
+            <span class="dola-name">DOLA</span>
+            (Delta-Obs Latent Actions), a new latent action model that explicitly conditions the inverse
+            dynamics on the difference between consecutive observation embeddings, jointly trained with
+            the encoder and an autoregressive forward dynamics model that reconstructs multiple future
+            embeddings. On a suite of four simulated environments, <span class="dola-name">DOLA</span>
+            learns latent actions that linearly recover ground-truth actions across both manipulation and
+            navigation tasks with only <strong>5% ground-truth action labels</strong>. A single
+            <span class="dola-name">DOLA</span> model trained on unpaired data from two robots learns a
+            shared latent space supporting open-loop trajectory transfer across embodiments. On a real
+            Franka arm, <span class="dola-name">DOLA</span> executes zero-shot video plans from an
+            off-the-shelf video generator with just 75 minutes of task-agnostic calibration data.
+          </p>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <!-- ══════════ METHOD ══════════ -->
+      <div class="row">
+        <div class="col-12">
+          <h2 class="center mb-3">Method</h2>
+          <p>
+            <span class="dola-name">Delta-Obs Latent Actions (DOLA)</span>
+            — a latent action model that constrains latent actions to encode visual change by construction.
+            A visual encoder \(f\) maps observations to embeddings \(s_t = f(o_t)\). The inverse dynamics
+            model computes latent actions from embedding differences,
+            \(z_t = q(s_t - s_{t-1})\), making the latent depend only on temporal visual change.
+          </p>
+
+          <p>
+            The architecture of <span class="dola-name">DOLA</span> is shown below.
+            A causal transformer forward dynamics model (FDM) autoregressively predicts multiple future
+            embeddings from past embeddings and latent actions, providing multi-step temporal supervision.
+            When sparse ground-truth action labels are available (5% of the training data), an auxiliary
+            linear action head aligns latent actions with real actions. The encoder, inverse dynamics model,
+            forward dynamics model, and action head are trained jointly end-to-end using forward dynamics,
+            action prediction, and covariance regularization losses.
+          </p>
+        </div>
+      </div>
+      <picture class="col-12 center img mt-3">
+        <img class="center img full-width mt-2 mb-2" src="./static/images/method.png" alt="DOLA architecture" />
+      </picture>
+      <p class="caption">
+        <strong>Figure 1.</strong> <span class="dola-name">DOLA</span> architecture —
+        visual encoder, delta-conditioned IDM, causal transformer FDM, and linear action head
+        trained jointly with a single objective.
+      </p>
+
+      <div class="line"></div>
+
+      <!-- ══════════ ROLLOUTS ══════════ -->
+      <!--
+      <div class="row mt-3">
+        <div class="col-12">
+          <h2 class="center mb-3">Open-Loop Rollout Comparison</h2>
+          <p class="center">
+            We show open-loop rollouts of <span class="dola-name">DOLA</span> across four simulated environments.
+            Each example trajectory is generated by decoding latent actions without any
+            closed-loop correction or online replanning.
+          </p>
+        </div>
+      </div>
+      -->
+
+    </div><!-- /container -->
+
+    <div class="body-content">
+
+      <!-- ── Env grid: one video per environment ── -->
+      <!--
+      <div class="container">
+        <div class="envs-row">
+          <div class="env-col">
+            <h4 class="center mb-2">PushT</h4>
+            <video class="img" muted autoplay loop playsinline>
+              <source src="./static/videos/pusht_dola_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="env-col">
+            <h4 class="center mb-2">LIBERO Goal</h4>
+            <video class="img" muted autoplay loop playsinline>
+              <source src="./static/videos/libero_dola_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="env-col">
+            <h4 class="center mb-2">MimicGen Stack</h4>
+            <video class="img" muted autoplay loop playsinline>
+              <source src="./static/videos/mimicgen_dola_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="env-col">
+            <h4 class="center mb-2">VizDoom</h4>
+            <video class="img" muted autoplay loop playsinline>
+              <source src="./static/videos/vizdoom_ours.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+      -->
+
+      <div class="container">
+        <div class="row mt-3">
+          <div class="col-12">
+            <h2 class="center mb-1">Real-world Robot Rollouts</h2>
+            <p class="center venue mb-3">Open-loop</p>
+
+            <p>
+              We evaluate <span class="dola-name">DOLA</span> on zero-shot execution of generated video plans
+              using a real Franka arm. Given an initial scene image and a text description of the desired task,
+              an off-the-shelf video generator produces a visual motion plan, which is then executed open-loop
+              using <span class="dola-name">DOLA</span> as the inverse dynamics model.
+            </p>
+
+            <p>
+              The robot is trained using only 75 minutes of task-agnostic calibration data consisting of random
+              end-effector motions, without any demonstrations of the downstream tasks or target objects.
+              Despite never observing the target objects during training, the robot successfully executes the
+              generated plans in a zero-shot setting.
+            </p>
+          </div>
+        </div>
+
+        <!-- Calibration data -->
+        <div class="row mt-4">
+          <div class="col-12">
+            <h4 class="mb-2">Task-agnostic calibration data</h4>
+
+            <p class="text-narrow">
+              <span class="dola-name">DOLA</span> is trained using only random end-effector motions collected
+              in an empty workspace, without any task demonstrations, object interactions, or language supervision.
+              These trajectories are used solely to learn the inverse dynamics mapping from visual change to
+              executable robot actions.
+            </p>
+
+            <div class="singlevideo mb-2">
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/calibration-franka.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p class="caption">
+              Random end-effector motions collected in an empty workspace — no objects, no tasks, no language.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pick up the orange cup -->
+        <div class="row mt-3">
+          <div class="col-12">
+            <h4 class="mb-2">Pick up the orange cup</h4>
+
+            <div class="tworow mb-4">
+              <div>
+                <p class="tworow-label">AI Generated Video Plan</p>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cup_planning.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              <div>
+                <p class="tworow-label execution">Robot Execution</p>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cup_execution.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Put the bread on the plate -->
+        <div class="row mt-2">
+          <div class="col-12">
+            <h4 class="mb-2">Put the bread on the plate</h4>
+
+            <div class="tworow mb-5">
+              <div>
+                <p class="tworow-label">AI Generated Video Plan</p>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/bread_planning.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              <div>
+                <p class="tworow-label execution">Robot Execution</p>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/bread_execution.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="line"></div>
+
+        <!-- ══════════ CROSS-EMBODIMENT ══════════ -->
+        <div class="row mt-3">
+          <div class="col-12">
+            <h2 class="center mb-1">Cross-embodiment Transfer</h2>
+            <p class="center venue mb-3">Open-loop</p>
+
+            <p>
+              To demonstrate that the learned latent action transfers across embodiments, we infer the
+              latent action sequence from a Panda video, decode it through the UR5e action head, and
+              replay the resulting delta joint commands on the UR5e robot. As shown in the videos below,
+              the shared latent action model produces a UR5e trajectory that tracks the original Panda
+              demonstration, indicating that the latent captures action content decodable across
+              embodiments.
+            </p>
+
+            <div class="sixrow mb-4">
+              <div>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cross_embodiment/success_001.mp4" type="video/mp4" />
+                </video>
+                <p class="sixrow-label success">Success</p>
+              </div>
+              <div>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cross_embodiment/success_002.mp4" type="video/mp4" />
+                </video>
+                <p class="sixrow-label success">Success</p>
+              </div>
+              <div>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cross_embodiment/success_003.mp4" type="video/mp4" />
+                </video>
+                <p class="sixrow-label success">Success</p>
+              </div>
+              <div>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cross_embodiment/failure_001.mp4" type="video/mp4" />
+                </video>
+                <p class="sixrow-label failure">Failure</p>
+              </div>
+              <div>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cross_embodiment/failure_002.mp4" type="video/mp4" />
+                </video>
+                <p class="sixrow-label failure">Failure</p>
+              </div>
+              <div>
+                <video muted autoplay loop playsinline>
+                  <source src="./static/videos/cross_embodiment/failure_003.mp4" type="video/mp4" />
+                </video>
+                <p class="sixrow-label failure">Failure</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /body-content -->
+  </div><!-- /jumbotron -->
+
+  <!-- ══════════ SCRIPTS ══════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const code = document.querySelector('.bibtex-wrap pre').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    });
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+    delimiters: [
+      { left: '\\(', right: '\\)', display: false },
+      { left: '\\[', right: '\\]', display: true }
+    ],
+    throwOnError: false
+  });"></script>
+
+</body>
+
+</html>
