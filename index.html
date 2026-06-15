@@ -294,9 +294,9 @@
 
             <p>
               To demonstrate that the learned latent action transfers across embodiments, we infer the
-              latent action sequence from a Panda video, decode it through the UR5e action head, and
-              replay the resulting delta joint commands on the UR5e robot. As shown in the videos below,
-              the shared latent action model produces a UR5e trajectory that tracks the original Panda
+              latent action sequence from a Panda video, decode it through the UR5E action head, and
+              replay the resulting delta joint commands on the UR5E robot. As shown in the videos below,
+              the shared latent action model produces a UR5E trajectory that tracks the original Panda
               demonstration, indicating that the latent captures action content decodable across
               embodiments.
             </p>
@@ -339,6 +339,116 @@
                 <p class="sixrow-label failure">Failure</p>
               </div>
             </div>
+
+            <h3 class="center mb-1">Latent Semantic Analysis</h3>
+            <!-- <p class="center venue mb-3">Panda (top) and UR5E (bottom)</p> -->
+            <p>
+              Panda and UR5E rollouts after decoding the same latent actions through their
+              respective action heads from a fixed initial pose. The shared latent directions,
+              recovered by canonical correlation against end-effector targets, drive both
+              embodiments along the expected axis.
+            </p>
+
+            <div class="skillgrid top">
+              <div></div>
+              <p class="skillgrid-skill pos">Backward</p>
+              <p class="skillgrid-skill neg">Forward</p>
+              <div></div>
+              <p class="skillgrid-skill pos">Left</p>
+              <p class="skillgrid-skill neg">Right</p>
+              <div></div>
+              <p class="skillgrid-skill pos">Down</p>
+              <p class="skillgrid-skill neg">Up</p>
+
+              <div class="skillgrid-robot">Panda</div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/01_dx_backward.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/02_dx_forward.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/03_dy_left.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/04_dy_right.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/05_dz_down.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/06_dz_up.mp4" type="video/mp4" />
+              </video>
+
+              <div class="skillgrid-robot">UR5E</div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/01_dx_backward.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/02_dx_forward.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/03_dy_left.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/04_dy_right.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/05_dz_down.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/06_dz_up.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            <div class="skillgrid bottom">
+              <div></div>
+              <div></div>
+              <p class="skillgrid-skill pos">Rotate CCW</p>
+              <p class="skillgrid-skill neg">Rotate CW</p>
+              <div></div>
+              <p class="skillgrid-skill pos">Gripper Open</p>
+              <p class="skillgrid-skill neg">Gripper Close</p>
+              <div></div>
+
+              <div class="skillgrid-robot">Panda</div>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/07_drz_rotate_ccw.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/08_drz_rotate_cw.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/09_gripper_open.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/panda/10_gripper_close.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+
+              <div class="skillgrid-robot">UR5E</div>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/07_drz_rotate_ccw.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/08_drz_rotate_cw.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/09_gripper_open.mp4" type="video/mp4" />
+              </video>
+              <video muted autoplay loop playsinline>
+                <source src="./static/videos/cross_embodiment/cca_skill_videos/ur5e/10_gripper_close.mp4" type="video/mp4" />
+              </video>
+              <div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -357,6 +467,33 @@
         setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
       });
     });
+  </script>
+
+  <!-- Keep each Panda/UR5E skill pair in sync: the shorter clip holds its
+       last frame until its partner ends, then both restart together. -->
+  <script>
+    (function () {
+      const vids = Array.from(document.querySelectorAll('.skillgrid video'));
+      const pairs = {};
+      vids.forEach(v => {
+        const key = v.querySelector('source').getAttribute('src').split('/').pop();
+        (pairs[key] = pairs[key] || []).push(v);
+      });
+      Object.values(pairs).forEach(pair => {
+        const ended = new Set();
+        const restart = () => {
+          ended.clear();
+          pair.forEach(v => { v.currentTime = 0; v.play(); });
+        };
+        pair.forEach(v => {
+          v.loop = false; // disable native loop; we drive the loop manually
+          v.addEventListener('ended', () => {
+            ended.add(v);
+            if (ended.size === pair.length) restart();
+          });
+        });
+      });
+    })();
   </script>
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>

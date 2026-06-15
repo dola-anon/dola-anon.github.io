@@ -148,6 +148,55 @@ a.amber:hover { text-decoration: underline; }
 .sixrow-label.success { color: #16a34a; }
 .sixrow-label.failure { color: #dc2626; }
 
+/* ── Paired skill grid (panda row over ur5e row) ── */
+.skillgrid {
+  display: grid;
+  column-gap: 0;
+  row-gap: 6px;
+  align-items: center;
+  margin-bottom: 24px;
+  --pairgap: 16px;
+}
+
+/* top: 3 flush pairs, gap only between pairs */
+.skillgrid.top {
+  grid-template-columns:
+    max-content 1fr 1fr var(--pairgap) 1fr 1fr var(--pairgap) 1fr 1fr;
+}
+
+/* bottom: 2 flush pairs, centered by 1fr spacers, same video width */
+.skillgrid.bottom {
+  grid-template-columns:
+    max-content 1fr 1fr 1fr var(--pairgap) 1fr 1fr 1fr;
+}
+
+.skillgrid video {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+
+.skillgrid-skill {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #555;
+  padding: 2px 0;
+  margin: 0;
+}
+
+.skillgrid-skill.pos { color: #7da4f5; }
+.skillgrid-skill.neg { color: #f59d98; }
+
+.skillgrid-robot {
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #2563eb;
+  padding-right: 6px;
+  white-space: nowrap;
+}
+
 /* ── Env grid ── */
 .envs-row {
   display: grid;
