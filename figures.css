@@ -1,0 +1,28 @@
+/* Media layout additions; the original site stylesheet is preserved. */
+.dola-figure { width: 100%; margin-left: 0; margin-right: 0; }
+.dola-figure > a { display: block; }
+.dola-figure img { display: block; width: 100%; height: auto; }
+.dola-figure > a:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
+
+/* A compact calibration clip beside its description. */
+.calibration-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 24px;
+  align-items: start;
+}
+.calibration-preview { width: 180px; max-width: 100%; margin: 0; }
+.calibration-preview video { display: block; width: 100%; height: auto; border-radius: 4px; }
+.calibration-preview .caption { font-size: 0.75rem; margin-bottom: 0; }
+
+/* Two pairs side by side: four smaller videos across desktop screens. */
+.robot-video-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.robot-video-task, .robot-video-task .tworow > div { min-width: 0; }
+.robot-video-task .tworow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.robot-video-task .tworow-label { margin-bottom: 6px; }
+
+@media (max-width: 640px) {
+  .calibration-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .calibration-preview { width: 160px; justify-self: center; }
+  .robot-video-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}

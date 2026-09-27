@@ -1,0 +1,126 @@
+[
+  {
+    "local": "./static/videos/calibration-franka.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/calibration-franka.mp4"
+  },
+  {
+    "local": "./static/videos/cup_planning.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cup_planning.mp4"
+  },
+  {
+    "local": "./static/videos/cup_execution.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cup_execution.mp4"
+  },
+  {
+    "local": "./static/videos/bread_planning.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/bread_planning.mp4"
+  },
+  {
+    "local": "./static/videos/bread_execution.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/bread_execution.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/success_001.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/success_001.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/success_002.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/success_002.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/success_003.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/success_003.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/failure_001.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/failure_001.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/failure_002.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/failure_002.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/failure_003.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/failure_003.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/01_dx_backward.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/01_dx_backward.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/02_dx_forward.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/02_dx_forward.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/03_dy_left.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/03_dy_left.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/04_dy_right.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/04_dy_right.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/05_dz_down.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/05_dz_down.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/06_dz_up.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/06_dz_up.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/01_dx_backward.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/01_dx_backward.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/02_dx_forward.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/02_dx_forward.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/03_dy_left.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/03_dy_left.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/04_dy_right.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/04_dy_right.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/05_dz_down.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/05_dz_down.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/06_dz_up.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/06_dz_up.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/07_drz_rotate_ccw.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/07_drz_rotate_ccw.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/08_drz_rotate_cw.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/08_drz_rotate_cw.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/09_gripper_open.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/09_gripper_open.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/panda/10_gripper_close.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/panda/10_gripper_close.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/07_drz_rotate_ccw.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/07_drz_rotate_ccw.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/08_drz_rotate_cw.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/08_drz_rotate_cw.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/09_gripper_open.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/09_gripper_open.mp4"
+  },
+  {
+    "local": "./static/videos/cross_embodiment/cca_skill_videos/ur5e/10_gripper_close.mp4",
+    "hosted_fallback": "https://dola-anon.github.io/static/videos/cross_embodiment/cca_skill_videos/ur5e/10_gripper_close.mp4"
+  }
+]
