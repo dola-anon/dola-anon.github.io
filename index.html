@@ -141,6 +141,132 @@
 
       <div class="line"></div>
 
+      <!-- ══════════ SIMULATED BENCHMARK RESULTS ══════════ -->
+      <section class="row mt-3" aria-labelledby="benchmark-results-heading">
+        <div class="col-12">
+          <h2 class="center mb-3" id="benchmark-results-heading">Simulated Benchmark Results</h2>
+          <p>
+            We evaluate the learned action representations with linear probes. Lower mean squared error (MSE)
+            indicates that a linear model can recover the ground-truth actions more accurately from the frozen
+            representation.
+          </p>
+
+          <h3 class="center mt-4 mb-2">Action grounding on Push-T</h3>
+          <p>
+            Without ground-truth action supervision, the methods remain close to the mean-action baseline.
+            With 5% action supervision, <span class="dola-name">DOLA</span> reaches the lowest probe error.
+          </p>
+          <figure class="results-figure">
+            <div class="results-table-scroll" role="region" aria-label="Table 1: Push-T linear probe results" tabindex="0">
+              <table class="results-table" aria-describedby="table-1-caption">
+                <thead>
+                  <tr>
+                    <th scope="col">Push-T</th>
+                    <th scope="col">Mean baseline</th>
+                    <th scope="col">Linear LAM</th>
+                    <th scope="col">LAPA</th>
+                    <th scope="col">AdaWorld</th>
+                    <th scope="col">DreamDojo</th>
+                    <th scope="col"><span class="dola-name">DOLA</span> (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">0%</th>
+                    <td>1.10</td>
+                    <td>0.86 ± 0.01</td>
+                    <td>1.03 ± 0.01</td>
+                    <td>0.74 ± 0.02</td>
+                    <td>0.86 ± 0.01</td>
+                    <td>0.84 ± 0.05</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5%</th>
+                    <td>1.10</td>
+                    <td>0.70 ± 0.10</td>
+                    <td>1.11 ± 0.01</td>
+                    <td>0.35 ± 0.17</td>
+                    <td>0.05 ± 0.01</td>
+                    <td><strong>0.01 ± 0.01</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption class="caption" id="table-1-caption"><strong>Table 1.</strong> Linear probe MSE (↓) on
+              Push-T with 5% versus 0% ground-truth action supervision.</figcaption>
+          </figure>
+
+          <h3 class="center mt-4 mb-2">Held-out action representations</h3>
+          <p>
+            Across four simulated environments, <span class="dola-name">DOLA</span> has the lowest linear probe
+            error on held-out trajectories.
+          </p>
+          <figure class="results-figure">
+            <div class="results-table-scroll" role="region" aria-label="Table 2: Held-out linear probe results" tabindex="0">
+              <table class="results-table" aria-describedby="table-2-caption">
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">Push-T</th>
+                    <th scope="col">LIBERO 90/10</th>
+                    <th scope="col">MimicGen Stack</th>
+                    <th scope="col">VizDoom</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Mean baseline</th>
+                    <td>1.10</td>
+                    <td>0.91</td>
+                    <td>1.21</td>
+                    <td>0.99</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Linear LAM</th>
+                    <td>0.70 ± 0.10</td>
+                    <td>0.56 ± 0.04</td>
+                    <td>0.53 ± 0.01</td>
+                    <td>0.57 ± 0.01</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LAPA</th>
+                    <td>1.11 ± 0.01</td>
+                    <td>0.74 ± 0.12</td>
+                    <td>0.74 ± 0.05</td>
+                    <td>0.63 ± 0.03</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">AdaWorld</th>
+                    <td>0.35 ± 0.17</td>
+                    <td>0.14 ± 0.01</td>
+                    <td>0.67 ± 0.04</td>
+                    <td>0.62 ± 0.03</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DreamDojo</th>
+                    <td>0.05 ± 0.01</td>
+                    <td>0.13 ± 0.01</td>
+                    <td>0.24 ± 0.01</td>
+                    <td>0.42 ± 0.01</td>
+                  </tr>
+                  <tr class="results-table-highlight">
+                    <th scope="row"><span class="dola-name">DOLA</span> (Ours)</th>
+                    <td>0.01 ± 0.01</td>
+                    <td>0.10 ± 0.01</td>
+                    <td>0.17 ± 0.01</td>
+                    <td>0.39 ± 0.01</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption class="caption" id="table-2-caption"><strong>Table 2.</strong> Linear probe MSE (↓) on
+              held-out trajectories.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div class="line"></div>
+
     </div><!-- /container -->
 
     <div class="body-content">

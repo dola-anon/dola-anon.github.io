@@ -88,6 +88,54 @@ a.amber:hover { text-decoration: underline; }
   margin-bottom: 2rem;
 }
 
+/* ── Simulated benchmark tables ── */
+.results-figure { margin: 1.25rem 0 2rem; }
+
+.results-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.results-table-scroll:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.results-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  border-top: 2px solid #333447;
+  border-bottom: 2px solid #333447;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.results-table th,
+.results-table td {
+  padding: 0.65rem 0.75rem;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.results-table thead th {
+  border-bottom: 1px solid #999aa6;
+  font-weight: 700;
+}
+
+.results-table tbody tr + tr { border-top: 1px solid #e5e7eb; }
+
+.results-table th:first-child { text-align: left; }
+
+.results-table-highlight {
+  background: #eff5ff;
+  font-weight: 700;
+}
+
+.results-figure .caption { margin: 0.75rem 0 0; }
+
 /* ── Body content wrapper ── */
 .body-content { padding-bottom: 100px; }
 
