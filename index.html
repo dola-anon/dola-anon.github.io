@@ -146,15 +146,13 @@
         <div class="col-12">
           <h2 class="center mb-3" id="benchmark-results-heading">Simulated Benchmark Results</h2>
           <p>
-            We evaluate the learned action representations with linear probes. Lower mean squared error (MSE)
-            indicates that a linear model can recover the ground-truth actions more accurately from the frozen
-            representation.
+            We evaluate the learned representations with linear probes and downstream latent policies.
+            Lower linear-probe mean squared error (MSE) and higher policy scores indicate better performance.
           </p>
 
           <h3 class="center mt-4 mb-2">Action grounding on Push-T</h3>
           <p>
-            Without ground-truth action supervision, the methods remain close to the mean-action baseline.
-            With 5% action supervision, <span class="dola-name">DOLA</span> reaches the lowest probe error.
+            Across all baselines, action grounding matters for learning a decodable latent action representation.
           </p>
           <figure class="results-figure">
             <div class="results-table-scroll" role="region" aria-label="Table 1: Push-T linear probe results" tabindex="0">
@@ -187,7 +185,7 @@
                     <td>1.11 ± 0.01</td>
                     <td>0.35 ± 0.17</td>
                     <td>0.05 ± 0.01</td>
-                    <td><strong>0.01 ± 0.01</strong></td>
+                    <td>0.01 ± 0.01</td>
                   </tr>
                 </tbody>
               </table>
@@ -196,11 +194,7 @@
               Push-T with 5% versus 0% ground-truth action supervision.</figcaption>
           </figure>
 
-          <h3 class="center mt-4 mb-2">Held-out action representations</h3>
-          <p>
-            Across four simulated environments, <span class="dola-name">DOLA</span> has the lowest linear probe
-            error on held-out trajectories.
-          </p>
+          <h3 class="center mt-4 mb-2">Linear probe results</h3>
           <figure class="results-figure">
             <div class="results-table-scroll" role="region" aria-label="Table 2: Held-out linear probe results" tabindex="0">
               <table class="results-table" aria-describedby="table-2-caption">
@@ -261,6 +255,69 @@
             </div>
             <figcaption class="caption" id="table-2-caption"><strong>Table 2.</strong> Linear probe MSE (↓) on
               held-out trajectories.</figcaption>
+          </figure>
+
+          <h3 class="center mt-4 mb-2">Policy rollout results</h3>
+          <figure class="results-figure">
+            <div class="results-table-scroll" role="region" aria-label="Table 3: Latent policy performance" tabindex="0">
+              <table class="results-table" aria-describedby="table-3-caption">
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">Push-T</th>
+                    <th scope="col">LIBERO 90/10</th>
+                    <th scope="col">MimicGen Stack</th>
+                    <th scope="col">VizDoom</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Oracle</th>
+                    <td>0.64 ± 0.01</td>
+                    <td>0.90 ± 0.01</td>
+                    <td>0.92 ± 0.02</td>
+                    <td>1.00 ± 0.01</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Linear LAM</th>
+                    <td>0.09 ± 0.01</td>
+                    <td>0.26 ± 0.06</td>
+                    <td>0.22 ± 0.02</td>
+                    <td><strong>0.99 ± 0.01</strong></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LAPA</th>
+                    <td>0.07 ± 0.01</td>
+                    <td>0.04 ± 0.04</td>
+                    <td>0.09 ± 0.01</td>
+                    <td>0.88 ± 0.09</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">AdaWorld</th>
+                    <td>0.17 ± 0.06</td>
+                    <td>0.62 ± 0.05</td>
+                    <td>0.02 ± 0.01</td>
+                    <td>0.41 ± 0.10</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DreamDojo</th>
+                    <td><strong>0.57 ± 0.02</strong></td>
+                    <td>0.71 ± 0.01</td>
+                    <td>0.82 ± 0.04</td>
+                    <td><strong>0.96 ± 0.01</strong></td>
+                  </tr>
+                  <tr class="results-table-highlight">
+                    <th scope="row"><span class="dola-name">DOLA</span> (Ours)</th>
+                    <td>0.56 ± 0.02</td>
+                    <td>0.84 ± 0.01</td>
+                    <td>0.90 ± 0.01</td>
+                    <td>0.98 ± 0.02</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption class="caption" id="table-3-caption"><strong>Table 3.</strong> Latent policy performance (↑)
+              across environments with DynaMo features.</figcaption>
           </figure>
         </div>
       </section>
